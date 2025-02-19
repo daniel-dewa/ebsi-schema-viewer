@@ -23,7 +23,7 @@ export const useSchemaList = routeLoader$(async () => {
   url.searchParams.append('page[size]', '1');
 
   const res = await fetch(url);
-  if (!res.ok) throw new Error(`Schema request failed: ${res.statusText} ${body}`);
+  if (!res.ok) throw new Error(`Schema request failed: ${res.statusText}`);
   schemaListCache.totalCount = (await res.json())["total"] as number;
 
   // Fetch all
