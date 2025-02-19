@@ -1,7 +1,7 @@
 import { component$, useComputed$ } from "@builder.io/qwik";
 import { routeLoader$, type DocumentHead } from "@builder.io/qwik-city";
 import { SchemaItem } from "~/components/SchemaItem";
-import { writeFile, readFile } from "node:fs/promises";
+// import { writeFile, readFile } from "node:fs/promises";
 import _ from "lodash";
 
 const EBSI_SCHEMA_API_URL = 'https://api-conformance.ebsi.eu/trusted-schemas-registry/v3/schemas'
@@ -12,11 +12,11 @@ const schemaListCache = {
   allData: new Array<{ "schemaId": string, title: string, description: string, type: string, obj: any }>()
 };
 export const useSchemaList = routeLoader$(async () => {
-  try {
-    const fileCache = await readFile("./cache.json", { encoding: 'utf8' });
-    console.log("CACHE HIT!")
-    return JSON.parse(fileCache) as typeof schemaListCache;
-  } catch { /* EMPTY */ }
+  // try {
+  //   const fileCache = await readFile("./cache.json", { encoding: 'utf8' });
+  //   console.log("CACHE HIT!")
+  //   return JSON.parse(fileCache) as typeof schemaListCache;
+  // } catch { /* EMPTY */ }
 
   // Fetch count
   const url = new URL(EBSI_SCHEMA_API_URL);
@@ -52,7 +52,7 @@ export const useSchemaList = routeLoader$(async () => {
   }
 
   // Save to cache
-  await writeFile("./cache.json", JSON.stringify(schemaListCache));
+  // await writeFile("./cache.json", JSON.stringify(schemaListCache));
 
   console.log("CACHE MISS!")
   return schemaListCache;
