@@ -1,4 +1,4 @@
-import { component$, useComputed$, useTask$, useVisibleTask$ } from "@builder.io/qwik";
+import { component$, useComputed$ } from "@builder.io/qwik";
 import { routeLoader$, type DocumentHead } from "@builder.io/qwik-city";
 import { SchemaItem } from "~/components/SchemaItem";
 // import { writeFile, readFile } from "node:fs/promises";
@@ -62,12 +62,6 @@ export default component$(() => {
   const data = useSchemaList();
   const schemaData = useComputed$(() => {
     return _.sortBy(data.value.allData, 'title')
-  })
-
-  useVisibleTask$(({ track }) => {
-    const schemaData2 = track(() => schemaData.value);
-
-    console.log(schemaData);
   })
 
   return (
