@@ -13,5 +13,14 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
 };
 
 export default component$(() => {
-  return <Slot />;
+  return (
+    <div class="min-h-screen bg-gray-100">
+      <header class="bg-blue-600 text-white p-4 shadow-md">
+        <a href="/" class="text-3xl font-bold">EBSI Utils</a>
+      </header>
+      <main class="container mx-auto p-4">
+        <Slot />
+      </main>
+    </div>
+  );
 });
