@@ -1,5 +1,4 @@
 import { component$ } from "@builder.io/qwik";
-import { Link } from "@builder.io/qwik-city";
 import { JwkGenerator } from "~/components/jwk/jwk";
 
 export default component$(() => {
@@ -15,7 +14,7 @@ export default component$(() => {
                 <h2 class="text-2xl font-semibold">
                     List of all EBSI Schemas
                 </h2>
-                <p>Check the full list <Link class="underline" href="/ebsi-schema/">here</Link>.</p>
+                <p>Check the full list <a class="underline" href="/ebsi-schema/">here</a>.</p>
             </section>
 
             <section class="my-4">
