@@ -3,12 +3,15 @@ import * as multibase from "multibase"; // For Multibase decoding
 import * as fflate from 'fflate';
 import BitSet from "bitset"; // For BitSet decoding
 import { ToggleSwitch } from "../toggle-switch/toggle-switch";
+import { BITSTRING_SAMPLE } from "./bitstring-consts";
 
 export const BitStringDebugger = component$(() => {
   const inputString = useSignal<string>("");
   const errorMessage = useSignal<string | null>(null);
   const bitset = useSignal<NoSerialize<BitSet> | null>(null);
+  const bitsetCount = useComputed$<number | null>(() => bitset.value?.cardinality() || null);
   const bitsetRevoced = useComputed$<number[] | null>(() => bitset.value?.toArray() || null);
+  const bitsetLength = useSignal<number | null>(null);
   const counter = useSignal(0);
   const autoCounter = useSignal(false);
 
@@ -16,9 +19,10 @@ export const BitStringDebugger = component$(() => {
 
     // Multibase decode the input string
     const multibaseDecoded = wrapErr("Failed to decode multibase64", () => multibase.decode(s));
-    const bitsetArray = wrapErr("Failed to unzip", () => fflate.gunzipSync(multibaseDecoded));
+    const bitsetArray: Uint8Array = wrapErr("Failed to unzip", () => fflate.gunzipSync(multibaseDecoded));
     const bitsetObj = wrapErr("Failed to create bitset", () => new BitSet(bitsetArray));
     bitset.value = noSerialize(bitsetObj);
+    bitsetLength.value = bitsetArray.length;
   });
 
   useTask$(async ({ track }) => {
@@ -65,6 +69,13 @@ export const BitStringDebugger = component$(() => {
         <div class="flex flex-row gap-4">
           <button
             type="button"
+            onClick$={() => { inputString.value = BITSTRING_SAMPLE }}
+            class="px-4 py-2 bg-green-600 text-white rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          >
+            Load sample
+          </button>
+          <button
+            type="button"
             disabled={autoCounter.value}
             onClick$={() => counter.value = counter.value + 1}
             class={"px-4 py-2 bg-blue-600 text-white rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 " + (autoCounter.value && "bg-blue-300 hover:bg-blue-300")}
@@ -82,14 +93,15 @@ export const BitStringDebugger = component$(() => {
       {bitset.value && (
         <div class="space-y-4">
           <div>
-            <div class="text-lg font-medium text-gray-700">Indices of "1" Values:</div>
+            <div class="text-lg font-medium text-gray-700">Length:</div>
+            <div class="mt-2 p-2 border border-gray-300 rounded-md bg-gray-50">
+              {bitsetLength.value}
+            </div>
+          </div>
+          <div>
+            <div class="text-lg font-medium text-gray-700">Indices of "1" Values ({bitsetCount.value}):</div>
             <div class="mt-2 p-2 border border-gray-300 rounded-md bg-gray-50">
               {JSON.stringify(bitsetRevoced.value)}
-              {/* {decodedBitstring.value
-                .split("")
-                .map((bit, index) => (bit === "1" ? index : null))
-                .filter((index) => index !== null)
-                .join(", ")} */}
             </div>
           </div>
         </div>
@@ -115,4 +127,3 @@ const wrapErrAsync = async (msg: string, f: CallableFunction) => {
     throw new Error(`${msg}: ${err}`, { cause: err })
   }
 }
-
