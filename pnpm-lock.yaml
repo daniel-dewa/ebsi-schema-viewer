@@ -8,9 +8,15 @@ importers:
 
   .:
     dependencies:
+      '@digitalbazaar/bitstring':
+        specifier: ^3.1.0
+        version: 3.1.0
       '@types/lodash':
         specifier: ^4.17.15
         version: 4.17.15
+      bitset:
+        specifier: ^5.2.3
+        version: 5.2.3
       jose:
         specifier: ^6.0.10
         version: 6.0.10
@@ -45,6 +51,12 @@ importers:
       eslint-plugin-qwik:
         specifier: ^1.12.0
         version: 1.12.0(eslint@8.57.0)(typescript@5.4.5)
+      fflate:
+        specifier: ^0.8.2
+        version: 0.8.2
+      multibase:
+        specifier: ^4.0.6
+        version: 4.0.6
       postcss:
         specifier: ^8.4.39
         version: 8.5.3
@@ -129,6 +141,10 @@ packages:
   '@cspotcode/source-map-support@0.8.1':
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
     engines: {node: '>=12'}
+
+  '@digitalbazaar/bitstring@3.1.0':
+    resolution: {integrity: sha512-Cii+Sl++qaexOvv3vchhgZFfSmtHPNIPzGegaq4ffPnflVXFu+V2qrJ17aL2+gfLxrlC/zazZFuAltyKTPq7eg==}
+    engines: {node: '>=16'}
 
   '@emnapi/runtime@1.3.1':
     resolution: {integrity: sha512-kEBmG8KyqtxJZv+ygbEim+KCGtIq1fC22Ms3S4ziXmYKm8uyoLX0MHONVKwp+9opg390VaKRNt4a7A9NwmpNhw==}
@@ -581,6 +597,9 @@ packages:
   '@mdx-js/mdx@3.1.0':
     resolution: {integrity: sha512-/QxEhPAvGwbQmy1Px8F899L5Uc2KZ6JtXwlCgJmjSTBedwOZkByYcBG4GceIGPXRDsmfxhHazuS+hlOShRLeDw==}
 
+  '@multiformats/base-x@4.0.1':
+    resolution: {integrity: sha512-eMk0b9ReBbV23xXU693TAIrLyeO5iTgBZGSJfpqriG8UkYvr/hC9u9pyMlAakDNHWmbhMZCDs6KQO0jzKD8OTw==}
+
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
     engines: {node: '>= 8'}
@@ -927,9 +946,20 @@ packages:
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
 
+  base64url-universal@2.0.0:
+    resolution: {integrity: sha512-6Hpg7EBf3t148C3+fMzjf+CHnADVDafWzlJUXAqqqbm4MKNXbsoPdOkWeRTjNlkYG7TpyjIpRO1Gk0SnsFD1rw==}
+    engines: {node: '>=14'}
+
+  base64url@3.0.1:
+    resolution: {integrity: sha512-ir1UPr3dkwexU7FdV8qBBbNDRUhMmIekYMFZfi+C/sLNnRESKPl23nB9b2pltqfOQNnGzsDdId90AEtG5tCx4A==}
+    engines: {node: '>=6.0.0'}
+
   binary-extensions@2.3.0:
     resolution: {integrity: sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==}
     engines: {node: '>=8'}
+
+  bitset@5.2.3:
+    resolution: {integrity: sha512-uZ7++Z60MC9cZ+7YzQ1v9yPDydcjhmcMjGx2yoGTjjSXBoVMmTr2LCRbkpI19S9P/C75hhP7Bsakj+gVzVUDbQ==}
 
   blake3-wasm@2.1.5:
     resolution: {integrity: sha512-F1+K8EbfOZE49dtoPtmxUQrpXaBIl3ICvasLh+nJta0xkz+9kF/7uet9fLnwKqhDrmj6g+6K3Tw9yQPUg2ka5g==}
@@ -1311,6 +1341,9 @@ packages:
 
   fastq@1.19.0:
     resolution: {integrity: sha512-7SFSRCNjBQIZH/xZR3iy5iQYR8aGBE0h3VG6/cwlbrpdciNYBMotQav8c1XI3HjHH+NikUpP53nPdlZSdWmFzA==}
+
+  fflate@0.8.2:
+    resolution: {integrity: sha512-cPJU47OaAoCbg0pBvzsgpTPhmhqI5eJjh/JIu8tPj5q+T7iLvW/JAYUqmE7KOB4R1ZyEhzBaIQpQpardBF5z8A==}
 
   file-entry-cache@6.0.1:
     resolution: {integrity: sha512-7Gps/XWymbLk2QLYK4NzpMOrYjMhdIxXuIvy2QBsLE6ljuodKvdkWs/cpyJJ3CVIVpH0Oi1Hvg1ovbMzLdFBBg==}
@@ -1835,6 +1868,11 @@ packages:
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
 
+  multibase@4.0.6:
+    resolution: {integrity: sha512-x23pDe5+svdLz/k5JPGCVdfn7Q5mZVMBETiC+ORfO+sor9Sgs0smJzAjfTbM5tckeCqnaUuMYoz+k3RXMmJClQ==}
+    engines: {node: '>=12.0.0', npm: '>=6.0.0'}
+    deprecated: This module has been superseded by the multiformats module
+
   mustache@4.2.0:
     resolution: {integrity: sha512-71ippSywq5Yb7/tVYyGbkBggbU8H3u5Rz56fH60jGFgr8uHwxs+aSKeqmluIVzM0m0kB7xQjKS6qPfd0b2ZoqQ==}
     hasBin: true
@@ -1912,6 +1950,9 @@ packages:
 
   package-json-from-dist@1.0.1:
     resolution: {integrity: sha512-UEZIS3/by4OC8vL3P2dTXRETpebLI2NiI5vIrjaD/5UtrkFX/tNbwjTSRAGC/+7CAo2pIcBaRgWmcBBHcsaCIw==}
+
+  pako@2.1.0:
+    resolution: {integrity: sha512-w+eufiZ1WuJYgPXbV/PO3NCMEc3xqylkKHzp8bxp1uW4qaSNQUkwmLLEc3kKsfz8lpV1F8Ht3U1Cm+9Srog2ug==}
 
   parent-module@1.0.1:
     resolution: {integrity: sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==}
@@ -2642,6 +2683,11 @@ snapshots:
     dependencies:
       '@jridgewell/trace-mapping': 0.3.9
 
+  '@digitalbazaar/bitstring@3.1.0':
+    dependencies:
+      base64url-universal: 2.0.0
+      pako: 2.1.0
+
   '@emnapi/runtime@1.3.1':
     dependencies:
       tslib: 2.8.1
@@ -2964,6 +3010,8 @@ snapshots:
     transitivePeerDependencies:
       - acorn
       - supports-color
+
+  '@multiformats/base-x@4.0.1': {}
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
@@ -3305,7 +3353,15 @@ snapshots:
 
   balanced-match@1.0.2: {}
 
+  base64url-universal@2.0.0:
+    dependencies:
+      base64url: 3.0.1
+
+  base64url@3.0.1: {}
+
   binary-extensions@2.3.0: {}
+
+  bitset@5.2.3: {}
 
   blake3-wasm@2.1.5: {}
 
@@ -3828,6 +3884,8 @@ snapshots:
   fastq@1.19.0:
     dependencies:
       reusify: 1.0.4
+
+  fflate@0.8.2: {}
 
   file-entry-cache@6.0.1:
     dependencies:
@@ -4601,6 +4659,10 @@ snapshots:
 
   ms@2.1.3: {}
 
+  multibase@4.0.6:
+    dependencies:
+      '@multiformats/base-x': 4.0.1
+
   mustache@4.2.0: {}
 
   mz@2.7.0:
@@ -4677,6 +4739,8 @@ snapshots:
       p-limit: 3.1.0
 
   package-json-from-dist@1.0.1: {}
+
+  pako@2.1.0: {}
 
   parent-module@1.0.1:
     dependencies:

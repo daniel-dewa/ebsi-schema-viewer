@@ -1,4 +1,4 @@
-import { $, component$, useSignal, useTask$ } from "@builder.io/qwik";
+import { $, component$, isBrowser, useSignal, useTask$ } from "@builder.io/qwik";
 import * as jose from 'jose';
 
 type JwkType = 'A256KW' | 'A256GCMKW' | 'A128GCM' | 'A192GCM' | 'A256GCM';
@@ -18,8 +18,11 @@ export const JwkGenerator = component$(() => {
     useTask$(async ({ track }) => {
         track(() => counter.value);
         const type = track(() => inType.value);
-        const ret = await generateJwk(type);
-        outJwk.value = ret.jwk;
+
+        if (isBrowser) {
+            const ret = await generateJwk(type);
+            outJwk.value = ret.jwk;
+        }
     });
 
     const copyToClipboard = $(() => {
